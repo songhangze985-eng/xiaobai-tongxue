@@ -1,4 +1,4 @@
-/* 全局外壳:奶油纸底前台;/teach 下切夜自习深色透明变体 */
+/* 全局外壳:奶油纸底前台。讲解舱视口锁是 .locked,黑板不在这层。 */
 
 .shell {
   min-height: 100dvh;
@@ -11,14 +11,6 @@
 }
 
 .locked {
-  height: 100dvh;
-  overflow: hidden;
-}
-
-/* 讲解舱场景:根铺黑板色兜底(讲解舱自铺黑板底,此处防纸色露边) */
-.board {
-  background: var(--board);
-  /* 讲解舱是应用式布局:锁定视口高,滚动只发生在对话流内部 */
   height: 100dvh;
   overflow: hidden;
 }
@@ -74,13 +66,6 @@
   pointer-events: none;
 }
 
-.board .header {
-  background: color-mix(in oklab, var(--board-deep) 42%, transparent);
-  backdrop-filter: blur(28px) saturate(130%);
-  -webkit-backdrop-filter: blur(28px) saturate(130%);
-  border-bottom-color: color-mix(in oklab, var(--board-line) 70%, transparent);
-}
-
 /* 宣传页:同一块磨砂吸顶;74rem 海报版心仍在内壳,与 landing .page 对齐 */
 .landing .header {
   position: sticky;
@@ -93,15 +78,10 @@
 .landing .headerInner::after { display: none; }
 
 @media (prefers-reduced-transparency: reduce) {
-  .header,
-  .board .header {
+  .header {
     background: var(--paper);
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
-  }
-
-  .board .header {
-    background: var(--board-deep);
   }
 }
 
@@ -162,26 +142,6 @@
   color: var(--ink-faint);
   white-space: nowrap;
   transform: translateY(1px);
-}
-
-/* 夜自习:品牌章本身是靛蓝实心,直接压在黑板底上会糊成一团,
-   故在深色壳内给章垫一方奶白纸底圆角(与页签图标同一处理),读得出才算落了印 */
-.board .seal {
-  padding: 0.11rem;
-  border-radius: 28%;
-  background: var(--chalk);
-}
-
-.board .brandName {
-  color: var(--chalk);
-}
-
-.board .brandRule {
-  background: var(--board-line);
-}
-
-.board .brandMotto {
-  color: var(--chalk-soft);
 }
 
 @media (max-width: 640px) {
@@ -335,15 +295,6 @@
   color: var(--azure-deep);
 }
 
-.board .link {
-  color: var(--chalk-soft);
-}
-
-.board .link:hover,
-.board .linkActive {
-  color: var(--chalk);
-}
-
 @media (max-width: 560px) {
   .sectionMenu {
     position: fixed;
@@ -383,10 +334,6 @@
   flex: none;
 }
 
-.board .navRule {
-  background: var(--board-line);
-}
-
 /* ── 登入:赭陶实底小药丸(站点主动作制式),与导航铅字签拉开层级 ── */
 
 .loginBtn {
@@ -421,15 +368,6 @@
 
 .loginBtn:active {
   transform: translateY(0);
-}
-
-.board .loginBtn {
-  color: var(--chalk);
-  border-color: color-mix(in oklab, var(--chalk) 38%, transparent);
-}
-
-.board .loginBtn:hover {
-  background: color-mix(in oklab, var(--chalk) 12%, transparent);
 }
 
 /* ── 已登录:名章触发器;退出与安全信息收进个人中心 ── */
@@ -473,17 +411,6 @@
 .profileTrigger:hover .profileChevron { color: var(--ink-soft); }
 .profileTrigger[aria-expanded='true'] .profileChevron { transform: rotate(180deg); }
 
-.board .profileTrigger {
-  color: var(--chalk-soft);
-}
-
-.board .profileTrigger:hover {
-  border-color: var(--board-line);
-  background: color-mix(in oklab, var(--chalk) 10%, transparent);
-}
-
-.board .profileChevron { color: var(--chalk-soft); }
-
 /* ── 齿轮按钮 ── */
 
 .gearBtn {
@@ -509,19 +436,6 @@
 .gearBtn:hover {
   color: var(--ink);
   transform: rotate(45deg);
-}
-
-/* 焦点环走 index.css 全局基线;黑板变体顶栏换粉笔色(azure 在深底上 ~2:1 看不见) */
-.board .header :focus-visible {
-  outline-color: var(--chalk-soft);
-}
-
-.board .gearBtn {
-  color: var(--chalk-soft);
-}
-
-.board .gearBtn:hover {
-  color: var(--chalk);
 }
 
 /* ── 内容区 ── */
