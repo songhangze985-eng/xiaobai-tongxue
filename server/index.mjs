@@ -1090,7 +1090,7 @@ async function handleResendWebhook(req, res) {
   try {
     payload = await readRaw(req, 1024 * 1024, 10_000);
   } catch (error) {
-    return sendMediaBodyError(res, error);
+    return sendMediaBodyError(req, res, error);
   }
   try {
     const result = await resendInboundProcessor.process({
