@@ -1,8 +1,7 @@
 /**
  * 全局外壳 —— 顶部导航 + 设置弹窗。
  * 品牌章 Seal 与 public/ 下的页签图标是同一枚小白同学标记,改任一侧必须同步。
- * /teach 路由下切换为「夜自习」深色透明变体(粉笔白文字),
- * 页面根不铺纸色底,由讲解舱自铺黑板底。
+ * 外壳是奶油纸。讲解舱黑板是舱内物件;视口锁是 .locked。
  * / (宣传页)下头部同样吸顶;下滚收起、上滚滑出;品牌落款回宣传页,「书斋」导航到 /study。
  * 宣传页头部不放应用内导航/登入——对外留品牌、「进入书斋」与外观设置入口。
  */
@@ -66,8 +65,6 @@ const NAV_GROUPS: NavGroup[] = [
 
 export function AppShell({ children }: { children: ReactNode }) {
   const { pathname } = useLocation();
-  // 讲解舱已改「亮书斋 + 木框黑板物件」,全暗外壳退役(board 变体样式保留备用)
-  const boardMode = false;
   // 宣传页场景:头部吸顶,品牌落款回首页
   const landingMode = pathname === '/';
   // 注意精确到 '/teach/':裸 startsWith('/teach') 会把 /teacher 教师看板一并锁死(2026-07-16 生产 bug)
@@ -172,11 +169,9 @@ export function AppShell({ children }: { children: ReactNode }) {
     });
   }, [openMenu, pathname]);
 
-  const shellVariantClass = boardMode
-    ? `${styles.shell} ${styles.board}`
-    : landingMode
-      ? `${styles.shell} ${styles.landing}`
-      : authMode ? `${styles.shell} ${styles.auth}` : styles.shell;
+  const shellVariantClass = landingMode
+    ? `${styles.shell} ${styles.landing}`
+    : authMode ? `${styles.shell} ${styles.auth}` : styles.shell;
   const shellClass = `${shellVariantClass}${appLocked ? ` ${styles.locked}` : ''}`;
 
   return (
@@ -294,7 +289,7 @@ export function AppShell({ children }: { children: ReactNode }) {
         </div>
       </header>
 
-      {!landingMode && <StoryTrail key={pathname} pathname={pathname} board={boardMode} />}
+      {!landingMode && <StoryTrail key={pathname} pathname={pathname} />}
 
       <main className={styles.main}>{children}</main>
 

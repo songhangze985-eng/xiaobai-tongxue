@@ -1,5 +1,5 @@
 /* 篇章条:一线细带,只落当前章(朱文小印 + 回目)。卷名/旁白/整卷回目均已删(用户定案)。
-   带体落 paper-warm,顶缘一线纸色高光,底缘 hairline;讲解舱路由走 .board 黑板变体 */
+   带体落 paper-warm,顶缘一线纸色高光,底缘 hairline。 */
 
 .wrap {
   flex: none;
@@ -81,26 +81,6 @@
   letter-spacing: 0.1em;
   white-space: nowrap;
   text-overflow: ellipsis;
-}
-
-/* ── 黑板变体(讲解舱路由) ── */
-
-.board {
-  border-bottom-color: var(--board-line);
-  background: var(--board-deep);
-  box-shadow: inset 0 1px color-mix(in oklab, var(--chalk) 4%, transparent);
-}
-
-.board .label {
-  color: var(--chalk);
-}
-
-.board .chapter {
-  color: var(--chalk-amber);
-  border-color: color-mix(in oklab, var(--chalk-amber) 82%, transparent);
-  box-shadow:
-    inset 0 0 0 2px var(--board-deep),
-    inset 0 0 0 3px color-mix(in oklab, var(--chalk-amber) 28%, transparent);
 }
 
 @media (max-width: 480px) {
