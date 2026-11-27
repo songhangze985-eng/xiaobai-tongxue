@@ -3,7 +3,7 @@ import { Navigate, Outlet, useLocation } from 'react-router'
 import type { Permission } from '../types/admin'
 import { can, canAny } from '../lib/permissions'
 import { useAuthStore } from '../store/auth'
-import { Button, Feedback } from './ui'
+import { Feedback } from './ui'
 import shellStyles from '../styles/Shell.module.css'
 
 export function RequireSession() {
@@ -61,9 +61,4 @@ export function RequireAnyPermission({ permissions }: { permissions: Permission[
     )
   }
   return <Outlet />
-}
-
-export function SessionErrorAction() {
-  const bootstrap = useAuthStore((state) => state.bootstrap)
-  return <Button onClick={() => void bootstrap(true)}>重新验证</Button>
 }
